@@ -33,6 +33,7 @@ group :development, :test do
   gem 'byebug'
   gem 'pry'
   gem 'pry-byebug'
+  gem 'database_cleaner', require: false
 end
 
 group :development do

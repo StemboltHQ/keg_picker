@@ -1,5 +1,7 @@
 %h1 Add New Beer
 
+= render "errors/error_messages", object: @beer
+
 = form_for @beer do |f|
   %p
     = f.label :brand

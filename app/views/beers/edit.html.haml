@@ -1,5 +1,7 @@
 %h1 Edit Beer's name
 
+= render "errors/error_messages", object: @beer
+
 = form_for @beer do |f|
   %p
     = f.label :change_name

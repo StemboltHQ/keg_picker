@@ -1,5 +1,5 @@
 class BeersController < ApplicationController
-  before_action :load_beer, only: [:show]
+  before_action :load_beer, only: [:show, :destroy]
 
   def index
     @beers = Beer.all
@@ -13,6 +13,12 @@ class BeersController < ApplicationController
     @beer = Beer.new(beer_params)
     @beer.save!
     redirect_to @beer
+  end
+
+  def destroy
+    @beer.destroy!
+
+    redirect_to beers_path
   end
 
   private

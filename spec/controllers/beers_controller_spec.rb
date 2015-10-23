@@ -44,4 +44,17 @@ RSpec.describe BeersController, type: :controller do
       expect(assigns(:beer)).to eq beer
     end
   end
+
+  describe "DELETE #destroy" do
+    subject { delete :destroy, id: beer.to_param }
+
+    let!(:beer) { FactoryGirl.create :beer }
+
+    it "deletes a beer" do
+      expect { subject }.to change { Beer.count }.by(-1)
+    end
+
+    it { is_expected.to redirect_to "/beers" }
+  end
+
 end

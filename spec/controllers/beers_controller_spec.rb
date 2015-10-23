@@ -31,6 +31,20 @@ RSpec.describe BeersController, type: :controller do
     it "creates a new beer" do
       expect { subject }.to change { Beer.count }.by(1)
     end
+
+    context "with invalid parameters" do
+      before :each do
+        post :create, beer: { brand: "Jk" }
+      end
+
+      it "does not creates a new beer" do
+        expect(Beer.count).to eq 0
+      end
+
+      it "renders the template" do
+        expect( response ).to render_template :new
+      end
+    end
   end
 
   describe "GET #show" do

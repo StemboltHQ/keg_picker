@@ -11,8 +11,11 @@ class BeersController < ApplicationController
 
   def create
     @beer = Beer.new(beer_params)
-    @beer.save!
-    redirect_to @beer
+    if @beer.save
+      redirect_to @beer
+    else
+      render :new
+    end
   end
 
   def update

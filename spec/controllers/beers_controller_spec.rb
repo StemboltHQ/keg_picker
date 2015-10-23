@@ -3,6 +3,19 @@ require 'rails_helper'
 RSpec.describe BeersController, type: :controller do
   let(:beer) { FactoryGirl.create :beer }
 
+  describe "GET #index" do
+    subject { get :index }
+
+    let(:beers) { FactoryGirl.create_list :beer, 2 }
+    specify { expect(subject.status).to eq 200 }
+    it { is_expected.to render_template :index }
+
+    it "assigns all beers as @beers" do
+      subject
+      expect(assigns(:beers)).to eq beers
+    end
+  end
+
   describe "GET #new" do
     subject { get :new }
 

@@ -1,6 +1,10 @@
 class BeersController < ApplicationController
   before_action :load_beer, only: [:show]
 
+  def index
+    @beers = Beer.all
+  end
+
   def new
     @beer = Beer.new
   end

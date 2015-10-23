@@ -16,5 +16,8 @@
 !/log/.keep
 /tmp
 
+#coverage
+/coverage/
+
 #ignore specs output
 /spec/examples.txt

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   resources :beers
 
-  root "beers#new"
+  root "beers#index"
 end

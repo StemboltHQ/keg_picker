@@ -1,4 +1,5 @@
 class BeersController < ApplicationController
+  before_action :load_beer, only: [:show]
 
   def new
     @beer = Beer.new
@@ -15,4 +16,7 @@ class BeersController < ApplicationController
     params.require(:beer).permit(:brand)
   end
 
+  def load_beer
+    @beer = Beer.find(params[:id])
+  end
 end

@@ -19,4 +19,16 @@ RSpec.describe BeersController, type: :controller do
       expect { subject }.to change { Beer.count }.by(1)
     end
   end
+
+  describe "GET #show" do
+    subject { get :show, id: beer.to_param }
+
+    specify { expect(subject.status).to eq 200 }
+    it { is_expected.to render_template :show }
+
+    it "assigns a beer to @beer" do
+      subject
+      expect(assigns(:beer)).to eq beer
+    end
+  end
 end

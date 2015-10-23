@@ -70,6 +70,15 @@ RSpec.describe BeersController, type: :controller do
     end
 
     it { is_expected.to redirect_to beer }
+
+    context "with invalid parameters" do
+      let(:beer_params) do { brand: "Jk" }
+      end
+
+      it "renders the template" do
+        expect( subject ).to render_template :edit
+      end
+    end
   end
 
   describe "DELETE #destroy" do

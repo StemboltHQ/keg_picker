@@ -19,8 +19,11 @@ class BeersController < ApplicationController
   end
 
   def update
-    @beer.update(beer_params)
-    redirect_to @beer
+    if @beer.update(beer_params)
+      redirect_to @beer
+    else
+      render :edit
+    end
   end
 
   def destroy

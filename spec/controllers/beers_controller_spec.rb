@@ -45,6 +45,19 @@ RSpec.describe BeersController, type: :controller do
     end
   end
 
+  describe "PATCH update"do
+    subject { patch :update, id: beer.to_param, beer: beer_params }
+    let(:beer) { FactoryGirl.create :beer, brand: "Corona" }
+
+    let(:beer_params) { { brand: "Corona Light" } }
+
+    it "updates the beer" do
+      expect { subject }.to change { beer.reload.brand }.from("Corona").to("Corona Light")
+    end
+
+    it { is_expected.to redirect_to beer }
+  end
+
   describe "DELETE #destroy" do
     subject { delete :destroy, id: beer.to_param }
 

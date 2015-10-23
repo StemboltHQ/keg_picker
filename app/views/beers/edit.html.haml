@@ -1,0 +1,10 @@
+%h1 Edit Beer's name
+
+= form_for @beer do |f|
+  %p
+    = f.label :change_name
+    = f.text_field :brand
+
+  %p
+    = f.submit "Update"
+    = link_to "Back", beers_path

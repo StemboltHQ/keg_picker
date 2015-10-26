@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe BeersController, type: :controller do
+  login
   let(:beer) { FactoryGirl.create :beer }
+  let(:user) { FactoryGirl.create :user }
 
   describe "GET #index" do
     subject { get :index }

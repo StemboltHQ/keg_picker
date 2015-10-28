@@ -19,6 +19,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'simplecov', require: false, group: :test
 gem "haml-rails", "~> 0.9"
+gem 'dotenv-rails'
 
 gem 'factory_girl_rails', '~> 4.0'
 gem 'devise'

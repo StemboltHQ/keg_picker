@@ -21,3 +21,6 @@
 
 #ignore specs output
 /spec/examples.txt
+
+#Ignore credentials file
+.env

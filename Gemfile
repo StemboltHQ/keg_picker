@@ -24,6 +24,7 @@ gem 'dotenv-rails'
 gem 'factory_girl_rails', '~> 4.0'
 gem 'devise'
 gem 'rolify'
+gem 'cancancan', '~> 1.10'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

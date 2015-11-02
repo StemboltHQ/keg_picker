@@ -1,4 +1,5 @@
 class BeersController < ApplicationController
+  authorize_resource
   before_action :load_beer, only: [:edit, :show, :destroy, :update]
 
   def index

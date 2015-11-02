@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe BeersController, type: :controller do
-  login
+  authorize_and_login
   let(:beer) { FactoryGirl.create :beer }
   let(:user) { FactoryGirl.create :user }
 

@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
+  has_many :ballots
+
   def self.find_for_google_oauth2(access_token, _signed_in_resource = nil)
     data = access_token.info
     User.where(email: data["email"]).first_or_create! do |user|

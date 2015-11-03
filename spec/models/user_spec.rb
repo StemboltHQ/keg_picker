@@ -4,6 +4,8 @@ require 'cancan/matchers'
 RSpec.describe User, type: :model do
   AccessToken = Struct.new(:info)
 
+  it { is_expected.to have_many :ballots }
+
   it "is invalid without parameters" do
     expect(described_class.new().valid?).to be false
   end

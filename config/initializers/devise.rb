@@ -1,3 +1,4 @@
+require "omniauth-google-oauth2"
 Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
@@ -11,6 +12,11 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+
+  config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"],     scope: 'email, profile',
+    access_type: 'online',
+    prompt: 'select_account',
+    name: 'google'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'

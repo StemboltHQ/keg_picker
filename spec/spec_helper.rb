@@ -8,6 +8,9 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
   config.extend ControllerHelpers, type: :controller
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.add_mock(:google)
+
 
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
@@ -23,7 +26,6 @@ RSpec.configure do |config|
   # get run.
   config.filter_run :focus
   config.run_all_when_everything_filtered = true
-  config.include Devise::TestHelpers, type: :controller
 
   # Allows RSpec to persist some state between runs in order to support
   # the `--only-failures` and `--next-failure` CLI options. We recommend

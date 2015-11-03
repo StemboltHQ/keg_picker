@@ -44,6 +44,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-byebug'
   gem 'database_cleaner', require: false
+  gem 'shoulda-matchers', '~> 3.0'
 end
 
 group :development do

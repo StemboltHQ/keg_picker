@@ -4,6 +4,7 @@ RSpec.describe BallotsController, type: :controller do
   authorize_and_login
   let(:user) { FactoryGirl.create :user }
   let!(:beer) { FactoryGirl.create :beer }
+  let(:ballot) { FactoryGirl.create :ballot }
 
   describe "GET #index" do
     subject { get :index }
@@ -37,6 +38,18 @@ RSpec.describe BallotsController, type: :controller do
     it "assigns a new ballot to @ballot" do
       subject
       expect(assigns(:ballot)).to be_a_new(Ballot)
+    end
+  end
+
+  describe "GET #show" do
+    subject { get :show, id: ballot.to_param }
+
+    specify { expect(subject.status).to eq 200 }
+    it { is_expected.to render_template :show }
+
+    it "assigns a ballot to @ballot" do
+      subject
+      expect(assigns(:ballot)).to eq ballot
     end
   end
 end

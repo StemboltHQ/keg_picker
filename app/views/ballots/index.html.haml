@@ -1,0 +1,14 @@
+%h1 All Votes
+%table
+  %tbody
+    %tr
+      Keg
+    %tr
+      Voter
+    -@ballots.each do |ballot|
+      %tr
+        %td
+          #{ ballot.beer.brand }
+        %td
+          #{ ballot.user.username }
+=link_to "Back", beers_path

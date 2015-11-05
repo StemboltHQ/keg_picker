@@ -1,6 +1,10 @@
 class BallotsController < ApplicationController
   before_action :load_beer, only: [:create]
 
+  def index
+    @ballots = Ballot.all
+  end
+
   def new
     @beers = Beer.all
     @ballot = Ballot.new

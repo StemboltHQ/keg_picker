@@ -1,7 +1,8 @@
 class BallotsController < ApplicationController
-  before_action :load_beer, only: [:create]
-  before_action :load_ballot, only: [:show, :edit, :update]
-  before_action :load_all_beers, only: [:new, :edit]
+  before_filter :load_beer, only: [:create]
+  before_filter :load_ballot, only: [:show, :edit, :update]
+  before_filter :load_all_beers, only: [:new, :edit]
+  authorize_resource
 
   def index
     @ballots = Ballot.all

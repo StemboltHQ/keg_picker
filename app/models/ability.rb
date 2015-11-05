@@ -7,6 +7,8 @@ class Ability
       can :manage, :all
     else
       can :read, :all
+      can :create, Ballot
+      can :update, Ballot, user: { id: user.id }
     end
   end
 end

@@ -52,4 +52,15 @@ RSpec.describe BallotsController, type: :controller do
       expect(assigns(:ballot)).to eq ballot
     end
   end
+
+  describe "PATCH update"do
+    subject { put :update, id: ballot.to_param, beer_id: another_beer.id }
+    let(:another_beer) { FactoryGirl.create :beer, brand: "Corona" }
+
+    it "updates the ballot" do
+      expect { subject }.to change { ballot.reload.beer.brand}.to("Corona")
+    end
+
+    it { is_expected.to redirect_to ballot }
+  end
 end

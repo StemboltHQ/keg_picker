@@ -11,4 +11,6 @@
           #{ ballot.beer.brand }
         %td
           #{ ballot.user.username }
+        %td
+          =link_to "change", edit_ballot_path(ballot)
 =link_to "Back", beers_path

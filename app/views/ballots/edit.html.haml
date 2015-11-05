@@ -1,0 +1,5 @@
+%h1 Changed your mind?
+= form_tag(ballot_path(@ballot), method: :put) do
+  = select_tag "beer_id", options_from_collection_for_select(@beers, "id", "brand")
+  = submit_tag "Voote"
+= link_to "Back", beers_path

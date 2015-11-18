@@ -13,4 +13,7 @@
           #{ ballot.user.username }
         %td
           =link_to "change", edit_ballot_path(ballot)
+        %td
+          =link_to "delete", ballot_path(ballot), method: :delete, data: { confirm: "Are you sure you want to delete you ballot?" }
+
 =link_to "Back", beers_path

@@ -1,6 +1,6 @@
 class BallotsController < ApplicationController
   before_filter :load_beer, only: [:create]
-  before_filter :load_ballot, only: [:show, :edit, :update]
+  before_filter :load_ballot, only: [:show, :edit, :update, :destroy]
   before_filter :load_all_beers, only: [:new, :edit]
   authorize_resource
 
@@ -21,6 +21,11 @@ class BallotsController < ApplicationController
     if @ballot.update(beer_id: params[:beer_id])
       redirect_to @ballot
     end
+  end
+
+  def destroy
+    @ballot.destroy!
+    redirect_to ballots_path
   end
 
   private

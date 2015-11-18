@@ -63,4 +63,16 @@ RSpec.describe BallotsController, type: :controller do
 
     it { is_expected.to redirect_to ballot }
   end
+
+  describe "DELETE #destroy" do
+    subject { delete :destroy, id: ballot.to_param }
+
+    let!(:ballot) { FactoryGirl.create :ballot }
+
+    it "deletes a beer" do
+      expect { subject }.to change { Ballot.count }.by(-1)
+    end
+
+    it { is_expected.to redirect_to "/ballots" }
+  end
 end

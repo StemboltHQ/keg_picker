@@ -8,7 +8,7 @@ class Ability
     else
       can :read, :all
       can :create, Ballot
-      can :update, Ballot, user: { id: user.id }
+      can [:update, :destroy], Ballot, user: { id: user.id }
     end
   end
 end

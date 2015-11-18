@@ -87,9 +87,14 @@ RSpec.describe BeersController, type: :controller do
     subject { delete :destroy, id: beer.to_param }
 
     let!(:beer) { FactoryGirl.create :beer }
+    let!(:ballot) { FactoryGirl.create :ballot, beer_id: beer.id }
 
     it "deletes a beer" do
       expect { subject }.to change { Beer.count }.by(-1)
+    end
+
+    it "deletes associated ballets" do
+      expect { subject }.to change { Ballot.count }.by(-1)
     end
 
     it { is_expected.to redirect_to "/beers" }

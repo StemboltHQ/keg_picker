@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103212520) do
+ActiveRecord::Schema.define(version: 20151118181551) do
 
   create_table "ballots", force: :cascade do |t|
     t.integer  "user_id"
@@ -27,6 +27,12 @@ ActiveRecord::Schema.define(version: 20151103212520) do
     t.string   "brand"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "polls", force: :cascade do |t|
+    t.boolean  "closed",     default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "roles", force: :cascade do |t|
@@ -54,8 +60,6 @@ ActiveRecord::Schema.define(version: 20151103212520) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "username"
-    t.string   "provider"
-    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

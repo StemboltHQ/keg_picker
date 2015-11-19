@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe PollsController, type: :controller do
+  authorize_and_login
+  let(:user) { FactoryGirl.create :admin }
   describe "GET #index" do
     subject { get :index }
 

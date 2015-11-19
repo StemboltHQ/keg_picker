@@ -1,5 +1,6 @@
 class PollsController < ApplicationController
   before_filter :load_poll, only: [:destroy]
+  authorize_resource
 
   def index
     @polls = Poll.all
@@ -20,5 +21,4 @@ class PollsController < ApplicationController
   def load_poll
     @poll = Poll.find(params[:id])
   end
-
 end

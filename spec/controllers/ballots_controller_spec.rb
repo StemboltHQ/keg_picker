@@ -21,9 +21,14 @@ RSpec.describe BallotsController, type: :controller do
 
   describe "POST #create" do
     subject { post :create, { beer_id: beer.id } }
+    let!(:poll) { FactoryGirl.create :poll }
 
     it "creates a new ballot" do
       expect { subject }.to change { Ballot.count }.by(1)
+    end
+
+    it "assigns a new ballot to the current poll" do
+      expect(Ballot.last).to eq(Poll.current.ballots.last)
     end
   end
 

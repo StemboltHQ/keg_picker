@@ -13,7 +13,10 @@ class BallotsController < ApplicationController
   end
 
   def create
-    @ballot = @beer.ballots.create!(user_id: current_user.id)
+    current = Poll.current
+    if current
+      @ballot = current.ballots.create!(user_id: current_user.id, beer_id: @beer.id)
+    end
     redirect_to @ballot
   end
 

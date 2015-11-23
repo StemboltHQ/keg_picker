@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151118195637) do
+ActiveRecord::Schema.define(version: 20151121000045) do
 
   create_table "ballots", force: :cascade do |t|
     t.integer  "user_id"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20151118195637) do
     t.boolean  "closed",     default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.datetime "ended_at"
   end
 
   create_table "roles", force: :cascade do |t|

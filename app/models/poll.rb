@@ -11,10 +11,15 @@ class Poll < ActiveRecord::Base
   def finalize
     if self.ballots.any?
       find_winner
+      lock
     end
   end
 
   def find_winner
     self.update(winner: ballots.reverse_order.group(:beer).count.first[0])
+  end
+
+  def lock
+    self.update(closed: true)
   end
 end

@@ -7,4 +7,8 @@ class Poll < ActiveRecord::Base
     return last unless !any? || last.closed?
       nil
   end
+
+  def find_winner
+    self.update(winner: ballots.reverse_order.group(:beer).count.first[0])
+  end
 end

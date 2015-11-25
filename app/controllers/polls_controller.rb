@@ -11,6 +11,12 @@ class PollsController < ApplicationController
     redirect_to beers_path
   end
 
+  def finalize
+    poll = Poll.find(params[:poll_id])
+    poll.find_winner
+    redirect_to polls_path
+  end
+
   def update
     if @poll.update!(update_params)
       redirect_to polls_path

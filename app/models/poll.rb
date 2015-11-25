@@ -8,6 +8,12 @@ class Poll < ActiveRecord::Base
       nil
   end
 
+  def finalize
+    if self.ballots.any?
+      find_winner
+    end
+  end
+
   def find_winner
     self.update(winner: ballots.reverse_order.group(:beer).count.first[0])
   end

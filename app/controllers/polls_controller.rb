@@ -13,7 +13,7 @@ class PollsController < ApplicationController
 
   def finalize
     poll = Poll.find(params[:poll_id])
-    poll.find_winner
+    poll.finalize
     redirect_to polls_path
   end
 

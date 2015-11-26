@@ -24,4 +24,5 @@
           =link_to "Reopen", poll_path(id: poll.id, closed: false), method: :patch
         %td
           =link_to "Finilize", poll_finalize_path(poll_id: poll.id), method: :patch
-= link_to "Back", beers_path
+.action-links
+  = link_to "Back", beers_path

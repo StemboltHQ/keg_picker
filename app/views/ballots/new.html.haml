@@ -2,5 +2,6 @@
 
 = form_tag(ballots_path, method: :post) do
   = select_tag "beer_id", options_from_collection_for_select(@beers, "id", "brand")
+.action-links
   = submit_tag "Voote"
-= link_to "Back", beers_path
+  = link_to "Back", beers_path

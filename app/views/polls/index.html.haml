@@ -6,7 +6,9 @@
     -@polls.each do |poll|
       %tr
         %td
-          #{poll.created_at}
+          #{ poll.created_at }
         %td
           =link_to "Delete", poll_path(poll), method: :delete, data: { confirm: "Are you sure you want to delete this poll?" }
+        %td
+          =link_to "Close", poll_path(id: poll.id, closed: true, ended_at: Time.now), method: :patch
 = link_to "Back", beers_path

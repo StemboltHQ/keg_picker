@@ -16,8 +16,10 @@ class BallotsController < ApplicationController
     current = Poll.current
     if current
       @ballot = current.ballots.create!(user_id: current_user.id, beer_id: @beer.id)
+      redirect_to @ballot
+    else
+      redirect_to beers_path
     end
-    redirect_to @ballot
   end
 
   def update

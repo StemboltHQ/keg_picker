@@ -6,7 +6,8 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
     else
-      can :read, :all
+      can :read, Ballot
+      can :read, Beer
       can :create, Ballot
       can [:update, :destroy], Ballot, user: { id: user.id }
     end

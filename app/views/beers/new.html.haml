@@ -1,0 +1,11 @@
+%h1 Add New Beer
+
+= render "errors/error_messages", object: @beer
+
+= form_for @beer do |f|
+  %p
+    = f.label :brand
+    = f.text_field :brand
+  %p
+    = f.submit "Add Beer"
+=link_to "Back", beers_path

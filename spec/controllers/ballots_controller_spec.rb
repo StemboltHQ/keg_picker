@@ -30,6 +30,18 @@ RSpec.describe BallotsController, type: :controller do
     it "assigns a new ballot to the current poll" do
       expect(Ballot.last).to eq(Poll.current.ballots.last)
     end
+
+    context "when trying to create a second ballot" do
+      let(:another_beer) { FactoryGirl.create :beer }
+      before(:each) do
+        post :create, { beer_id: another_beer.id }
+      end
+
+      it "creates only one ballot per user per poll" do
+        expect { subject }.to raise_error(ActiveRecord::RecordInvalid)
+        expect(Ballot.count).to eq(1)
+      end
+    end
   end
 
   describe "GET #new" do

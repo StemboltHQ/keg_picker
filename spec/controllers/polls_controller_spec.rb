@@ -64,9 +64,12 @@ RSpec.describe PollsController, type: :controller do
 
     it "assigns the beers with the most votes as a winner of the voting" do
       subject
-
       expect(poll.reload.winner.brand).to eq("Keg#2")
     end
-  end
 
+    it "locks the poll" do
+      subject
+      expect(poll.reload.closed). to eq(true)
+    end
+  end
 end

@@ -8,6 +8,9 @@ RSpec.describe Ability, type: :model do
   subject { ability}
   context "when user is not an administartor" do
     it { is_expected.to be_able_to :read, :all }
+    it { is_expected.to be_able_to :update, Ballot, user: { id: user.id } }
+    it { is_expected.to be_able_to :destroy, Ballot, user: { id: user.id } }
+    it { is_expected.to be_able_to :create, Ballot }
   end
 
   context "when user is an administartor" do

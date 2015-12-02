@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151118195637) do
+ActiveRecord::Schema.define(version: 20151123224516) do
 
   create_table "ballots", force: :cascade do |t|
     t.integer  "user_id"
@@ -35,7 +35,11 @@ ActiveRecord::Schema.define(version: 20151118195637) do
     t.boolean  "closed",     default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.datetime "ended_at"
+    t.integer  "winner_id"
   end
+
+  add_index "polls", ["winner_id"], name: "index_polls_on_winner_id"
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -62,10 +66,14 @@ ActiveRecord::Schema.define(version: 20151118195637) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "username"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["provider"], name: "index_users_on_provider"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["uid"], name: "index_users_on_uid"
 
   create_table "users_roles", id: false, force: :cascade do |t|
     t.integer "user_id"

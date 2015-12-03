@@ -17,4 +17,5 @@
       = link_to "Login", new_user_session_path
       = link_to "Sign in with Google", user_omniauth_authorize_path(:google)
     .main-content
+      = render partial: "layouts/navbar"
       = yield

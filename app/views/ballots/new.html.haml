@@ -1,7 +1,8 @@
 %h1 Vote for your favourite beer
 
 = form_tag(ballots_path, method: :post) do
-  = select_tag "beer_id", options_from_collection_for_select(@beers, "id", "brand")
+  = select_tag "beer_id", options_from_collection_for_select(@beers, "id", "brand"), class: "form-control"
+
 .action-links
   = submit_tag "Voote"
   = link_to "Back", beers_path

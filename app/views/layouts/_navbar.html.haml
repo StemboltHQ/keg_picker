@@ -1,6 +1,12 @@
 %nav.navbar.navbar-inverse
-  =link_to "Add Beer", new_beer_path
-  =link_to "Make a Vote!", new_ballot_path
-  =link_to "See all votes", ballots_path
-  =link_to "Start Poll", polls_path, method: :post
-  =link_to "See current polls", polls_path
+  %ul.nav.navbar-nav
+    %li
+      =link_to "Add Beer", new_beer_path
+    %li
+      =link_to "Make a Vote!", new_ballot_path
+    %li
+      =link_to "See all votes", ballots_path
+    %li
+      =link_to "Start Poll", polls_path, method: :post
+    %li
+      =link_to "See current polls", polls_path

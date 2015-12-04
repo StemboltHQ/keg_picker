@@ -2,11 +2,12 @@
 %table
   %tbody
     %tr
-      Date Started:
-    %tr
-      Currently active:
-    %tr
-      Winner:
+      %td
+        Date Started:
+      %td
+        Currently active:
+      %td
+        Winner:
     -@polls.each do |poll|
       %tr
         %td
@@ -23,4 +24,5 @@
           =link_to "Reopen", poll_path(id: poll.id, closed: false), method: :patch
         %td
           =link_to "Finilize", poll_finalize_path(poll_id: poll.id), method: :patch
-= link_to "Back", beers_path
+.action-links
+  = link_to "Back", beers_path

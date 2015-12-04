@@ -1,0 +1,10 @@
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+.button-link {
+  background-color: $color-buttons-main;
+  text-decoration: none;
+  border: 0;
+  padding: 0.5em 2em;
+}

@@ -5,8 +5,8 @@
 = form_for @beer do |f|
   %p
     = f.label :change_name
-    = f.text_field :brand
+    = f.text_field :brand, class: "form-control"
 
   %p.action-links
-    = f.submit "Update"
-    = link_to "Back", beers_path
+    = f.submit "Update", class: "btn btn-lg btn-default"
+    = link_to "Back", beers_path, class: "btn btn-lg btn-default pull-right"

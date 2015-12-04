@@ -1,5 +1,5 @@
 %h1 Current Polls
-%table
+%table.table.table-striped
   %tbody
     %tr
       %td
@@ -24,5 +24,6 @@
           =link_to "Reopen", poll_path(id: poll.id, closed: false), method: :patch
         %td
           =link_to "Finilize", poll_finalize_path(poll_id: poll.id), method: :patch
+
 .action-links
-  = link_to "Back", beers_path
+  = link_to "Back", beers_path, class: "btn btn-lg btn-default pull-right"

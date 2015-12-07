@@ -1,4 +1,12 @@
 %h1 All Votes
+.row
+  .col-xs-12
+    .charts
+      =link_to 'Another Chart', ballots_path, id: "change_chart"
+      .chart.active
+        = column_chart Ballot.group(:beer_id).count, class: "chart"
+      .chart
+        = pie_chart Ballot.group(:beer_id).count
 %table.table.table-striped
   %tbody
     %tr

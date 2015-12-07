@@ -12,5 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
+$(function() {
+  $('.charts a').on('click',  function(event)  {
+    event.preventDefault(); // Prevent link from following its href
+    $('.charts .chart').toggleClass('active')
+  });
+});

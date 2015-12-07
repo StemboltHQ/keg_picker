@@ -9,3 +9,7 @@
 .action-links {
   margin-top: 15px;
 }
+
+.chart:not(.active) {
+  display: none;
+}

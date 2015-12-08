@@ -3,6 +3,7 @@
   .col-xs-12
     .chart
       = pie_chart Poll.last.ballots.joins(:beer).group('beers.brand').count
+      Total number of votes: #{ Poll.last.ballots.count }
 %table.table.table-striped
   %tbody
     %tr

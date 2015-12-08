@@ -22,4 +22,12 @@ class Poll < ActiveRecord::Base
   def lock
     self.update(closed: true)
   end
+
+  def next
+    Poll.where("id > ?", id).first
+  end
+
+  def previous
+    Poll.where("id < ?", id).last
+  end
 end

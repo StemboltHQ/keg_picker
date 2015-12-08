@@ -2,7 +2,7 @@
 .row
   .col-xs-12
     .chart
-      = pie_chart Ballot.group(:beer_id).count
+      = pie_chart Poll.last.ballots.joins(:beer).group('beers.brand').count
 %table.table.table-striped
   %tbody
     %tr

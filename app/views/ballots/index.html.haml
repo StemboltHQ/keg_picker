@@ -2,7 +2,8 @@
 .row
   .col-xs-12
     .chart
-      = pie_chart Poll.last.ballots.joins(:beer).group('beers.brand').count
+      -poll = PollPresenter.new(Poll.last)
+      = pie_chart poll.piechart_data
       Total number of votes: #{ Poll.last.ballots.count }
 %table.table.table-striped
   %tbody

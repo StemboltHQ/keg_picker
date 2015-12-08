@@ -8,4 +8,8 @@ class PollPresenter < SimpleDelegator
   def piechart_data
     @poll.ballots.joins(:beer).group('beers.brand').count
   end
+
+  def number_of_votes
+    "Total number of votes #{ @poll.ballots.count }"
+  end
 end

@@ -4,7 +4,7 @@
     .chart
       -poll = PollPresenter.new(Poll.last)
       = pie_chart poll.piechart_data
-      Total number of votes: #{ Poll.last.ballots.count }
+      = poll.number_of_votes
 %table.table.table-striped
   %tbody
     %tr

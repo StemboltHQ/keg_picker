@@ -13,3 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+$(function() {
+  $('.row a').on('click',  function(event)  {
+    event.preventDefault(); // Prevent link from following its href
+    $.get('api/polls/2', function(data){
+      data: $(event.target).serialize();
+      success: new Chartkick.PieChart($('.chart')[0], data);
+    });
+  });
+});

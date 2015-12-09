@@ -6,5 +6,9 @@ Rails.application.routes.draw do
     patch :finalize
   end
 
+  namespace :api do
+    resources :polls, only: [:show]
+  end
+
   root "beers#index"
 end

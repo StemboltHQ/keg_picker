@@ -4,7 +4,7 @@ module Api
 
     def show
       poll_presenter = PollPresenter.new(@poll)
-      render json: poll_presenter.piechart_data
+      render json: { chart_data: poll_presenter.piechart_data, prev_id: @poll.previous.id }
     end
 
     private

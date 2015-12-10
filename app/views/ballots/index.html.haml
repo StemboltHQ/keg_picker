@@ -2,12 +2,14 @@
 -poll = Poll.last
 .row
   .col-xs-12
-    =link_to 'previous', ballots_path, id: "change_graph"
+    =link_to 'previous', ballots_path, id: "previous_graph"
+    =link_to 'next', ballots_path, id: "next_graph"
     .chart
       -poll_presenter = PollPresenter.new(poll)
       = pie_chart poll_presenter.piechart_data
       = poll_presenter.number_of_votes
     #previous-poll{ "data-poll_id" => poll.previous.id }
+    #next-poll{ "data-poll_id" => Poll.first.id }
 %table.table.table-striped
   %tbody
     %tr

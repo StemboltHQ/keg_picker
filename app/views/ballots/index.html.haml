@@ -15,7 +15,7 @@
         Keg
       %td
         Voter
-    -@ballots.each do |ballot|
+    -poll.ballots.each do |ballot|
       %tr
         %td
           #{ ballot.beer.brand }

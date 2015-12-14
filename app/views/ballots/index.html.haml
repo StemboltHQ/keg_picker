@@ -11,9 +11,9 @@
 %table.table.table-striped
   %tbody
     %tr
-      %td
+      %th
         Keg
-      %td
+      %th
         Voter
     -poll.ballots.each do |ballot|
       %tr
@@ -22,6 +22,9 @@
         %td
           #{ ballot.user.username }
         %td
-          =link_to "change", edit_ballot_path(ballot)
+          =link_to "Edit", edit_ballot_path(ballot)
         %td
-          =link_to "delete", ballot_path(ballot), method: :delete, data: { confirm: "Are you sure you want to delete you ballot?" }
+          =link_to "Delete", ballot_path(ballot), method: :delete, data: { confirm: "Are you sure you want to delete your ballot?" }
+
+.action-links
+  = link_to "Back", beers_path, class: "btn btn-lg btn-default pull-right"

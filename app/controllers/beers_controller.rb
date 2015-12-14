@@ -13,8 +13,8 @@ class BeersController < ApplicationController
   def create
     @beer = Beer.new(beer_params)
     if @beer.save
-      flash[:success] = "You have successfully voted for #{ @beer.brand }"
-      redirect_to @beer
+      flash[:success] = "#{ @beer.brand } was added to the Beer list"
+      redirect_to beers_path
     else
       flash[:danger] = "Could not add a new Beer :( Try again!"
       render :new
@@ -24,7 +24,7 @@ class BeersController < ApplicationController
   def update
     if @beer.update(beer_params)
       flash[:success] = "You have successfully changed your Beer!"
-      redirect_to @beer
+      redirect_to beers_path
     else
       render :edit
       flash[:danger] = "Oops something went wrong.."

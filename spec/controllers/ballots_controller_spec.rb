@@ -38,7 +38,6 @@ RSpec.describe BallotsController, type: :controller do
       end
 
       it "creates only one ballot per user per poll" do
-        expect { subject }.to raise_error(ActiveRecord::RecordInvalid)
         expect(Ballot.count).to eq(1)
       end
     end
@@ -58,18 +57,6 @@ RSpec.describe BallotsController, type: :controller do
     end
   end
 
-  describe "GET #show" do
-    subject { get :show, id: ballot.to_param }
-
-    specify { expect(subject.status).to eq 200 }
-    it { is_expected.to render_template :show }
-
-    it "assigns a ballot to @ballot" do
-      subject
-      expect(assigns(:ballot)).to eq ballot
-    end
-  end
-
   describe "PATCH update"do
     subject { put :update, id: ballot.to_param, beer_id: another_beer.id }
     let(:another_beer) { FactoryGirl.create :beer, brand: "Corona" }
@@ -78,7 +65,7 @@ RSpec.describe BallotsController, type: :controller do
       expect { subject }.to change { ballot.reload.beer.brand}.to("Corona")
     end
 
-    it { is_expected.to redirect_to ballot }
+    it { is_expected.to redirect_to ballots_path }
   end
 
   describe "DELETE #destroy" do

@@ -1,3 +1,5 @@
+= link_to "Back", beers_path
+
 %h1 Edit Beer's name
 
 = render "errors/error_messages", object: @beer
@@ -9,4 +11,3 @@
 
   %p.action-links
     = f.submit "Update", class: "btn btn-lg btn-default"
-    = link_to "Back", beers_path, class: "btn btn-lg btn-default pull-right"

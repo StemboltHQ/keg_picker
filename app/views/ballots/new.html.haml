@@ -1,3 +1,5 @@
+= link_to "Back", beers_path
+
 %h1 Vote for your favourite beer
 
 = render "errors/error_messages", object: @ballot
@@ -7,4 +9,3 @@
 
   .action-links
     = submit_tag "Vote", class: "btn btn-lg btn-default"
-    = link_to "Back", root_path, class: "btn btn-lg btn-default pull-right"

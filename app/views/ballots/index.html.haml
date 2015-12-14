@@ -1,3 +1,5 @@
+= link_to "Back", beers_path
+
 %h1 All Votes
 -poll = Poll.last
 .row
@@ -24,7 +26,4 @@
         %td
           =link_to "Edit", edit_ballot_path(ballot)
         %td
-          =link_to "Delete", ballot_path(ballot), method: :delete, data: { confirm: "Are you sure you want to delete your ballot?" }
-
-.action-links
-  = link_to "Back", beers_path, class: "btn btn-lg btn-default pull-right"
+          =link_to "Delete", ballot_path(ballot), method: :delete, data: { confirm: "Are you sure you want to delete you ballot?" }

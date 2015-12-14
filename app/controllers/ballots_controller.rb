@@ -1,7 +1,7 @@
 class BallotsController < ApplicationController
   before_filter :load_beer, only: [:create]
   before_filter :load_ballot, only: [:show, :edit, :update, :destroy]
-  before_filter :load_all_beers, only: [:new, :edit]
+  before_filter :load_all_beers, only: [:new, :edit, :create]
   authorize_resource
 
   def index
@@ -15,10 +15,12 @@ class BallotsController < ApplicationController
   def create
     current = Poll.current
     if current
-      @ballot = current.ballots.create!(user_id: current_user.id, beer_id: @beer.id)
-      redirect_to @ballot
-    else
-      redirect_to beers_path
+      @ballot = current.ballots.new(user_id: current_user.id, beer_id: @beer.id)
+      if @ballot.save
+        redirect_to @ballot
+      else
+        render :new
+      end
     end
   end
 

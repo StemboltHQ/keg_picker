@@ -1,5 +1,7 @@
 %h1 Vote for your favourite beer
 
+= render "errors/error_messages", object: @ballot
+
 = form_tag(ballots_path, method: :post) do
   = select_tag "beer_id", options_from_collection_for_select(@beers, "id", "brand"), class: "form-control"
 

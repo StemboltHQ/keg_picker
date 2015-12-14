@@ -8,9 +8,7 @@ body {
   background-color: $color-body;
 }
 
-.nav-bar,
-.header,
-.navbar {
-  margin: 0 auto;
-  width: 960px;
+.nav-bar {
+  margin-top: .75em;
+  text-align: right;
 }

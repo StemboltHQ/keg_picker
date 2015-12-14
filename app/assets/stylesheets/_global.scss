@@ -8,6 +8,9 @@ body {
   background-color: $color-body;
 }
 
-.nav-bar {
-  position: relative;
+.nav-bar,
+.header,
+.navbar {
+  margin: 0 auto;
+  width: 800px;
 }

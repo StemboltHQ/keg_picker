@@ -18,7 +18,7 @@ class BallotsController < ApplicationController
       @ballot = current.ballots.new(user_id: current_user.id, beer_id: @beer.id)
       if @ballot.save
         flash[:success] = "You have successfully voted for #{ @beer.brand }"
-        redirect_to @ballot
+        redirect_to ballots_path
       else
         flash[:danger] = "Could not create a new vote for you :( "
         render :new
@@ -28,8 +28,8 @@ class BallotsController < ApplicationController
 
   def update
     if @ballot.update(beer_id: params[:beer_id])
-      flash[:success] = "You have changed your vote to #{ @beer.brand }"
-      redirect_to @ballot
+      flash[:success] = "You have changed your vote to #{ @ballot.beer.brand }"
+      redirect_to ballots_path
     end
   end
 

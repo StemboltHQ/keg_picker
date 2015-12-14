@@ -12,6 +12,9 @@ class Poll < ActiveRecord::Base
     if self.ballots.any?
       find_winner
       lock
+      flash[:success] = "The Winner is found! Order your Keg!"
+    else
+      flash[:danger] = "There are no votes currently... :("
     end
   end
 

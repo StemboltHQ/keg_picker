@@ -1,2 +1,4 @@
 - flash.each do |name, msg|
-  = content_tag :div, msg, class: name
+  - if name.eql?("notice")
+    - name = "success"
+  = content_tag :div, msg, class: "alert alert-" + name

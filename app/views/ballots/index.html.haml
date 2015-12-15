@@ -7,8 +7,8 @@
   =link_to 'Next poll >', ballots_path, id: "next_graph", :class => "utility-link"
 .chart
   -poll_presenter = PollPresenter.new(poll)
-  = pie_chart poll_presenter.piechart_data, colors: ["brown"]
   = poll_presenter.number_of_votes
+  = pie_chart poll_presenter.piechart_data, colors: ["brown"]
 #previous-poll{ "data-poll_id" => poll.previous.id }
 #next-poll{ "data-poll_id" => Poll.first.id }
 %table.table.table-striped

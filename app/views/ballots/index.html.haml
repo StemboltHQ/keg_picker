@@ -1,11 +1,11 @@
 = link_to "Back", beers_path
 
-%h1 All Votes
+%h1 Poll details
 -poll = Poll.last
 .row
   .col-xs-12
-    =link_to 'previous', ballots_path, class: "chart-link previous", "data-poll_id" => poll.previous.id
-    =link_to 'next', ballots_path, class: "chart-link next", "data-poll_id" => Poll.first.id
+    =link_to 'Previous poll', ballots_path, class: "chart-link previous", "data-poll_id" => poll.previous.id
+    =link_to 'Next poll', ballots_path, class: "chart-link next", "data-poll_id" => Poll.first.id
     .chart
       -poll_presenter = PollPresenter.new(poll)
       = pie_chart poll_presenter.piechart_data

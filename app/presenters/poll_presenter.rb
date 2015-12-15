@@ -10,6 +10,6 @@ class PollPresenter < SimpleDelegator
   end
 
   def number_of_votes
-    "Total number of votes #{ @poll.ballots.count }"
+    "Total number of votes: #{ @poll.ballots.count }"
   end
 end

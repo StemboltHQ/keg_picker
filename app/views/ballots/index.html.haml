@@ -5,7 +5,7 @@
 .row
   .col-xs-12
     =link_to 'Previous poll', ballots_path, id: "previous_graph"
-    =link_to 'Next poll', ballots_path, id: "next_graph"
+    =link_to 'Next poll', ballots_path, id: "next_graph", :class => "utility-link"
     .chart
       -poll_presenter = PollPresenter.new(poll)
       = pie_chart poll_presenter.piechart_data

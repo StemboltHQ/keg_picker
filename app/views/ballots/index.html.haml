@@ -2,16 +2,15 @@
 
 %h1 Poll details
 -poll = Poll.last
-.row
-  .col-xs-12
-    =link_to 'Previous poll', ballots_path, id: "previous_graph"
-    =link_to 'Next poll', ballots_path, id: "next_graph", :class => "utility-link"
-    .chart
-      -poll_presenter = PollPresenter.new(poll)
-      = pie_chart poll_presenter.piechart_data
-      = poll_presenter.number_of_votes
-    #previous-poll{ "data-poll_id" => poll.previous.id }
-    #next-poll{ "data-poll_id" => Poll.first.id }
+.poll-navigation
+  =link_to '< Previous poll', ballots_path, id: "previous_graph"
+  =link_to 'Next poll >', ballots_path, id: "next_graph", :class => "utility-link"
+.chart
+  -poll_presenter = PollPresenter.new(poll)
+  = pie_chart poll_presenter.piechart_data
+  = poll_presenter.number_of_votes
+#previous-poll{ "data-poll_id" => poll.previous.id }
+#next-poll{ "data-poll_id" => Poll.first.id }
 %table.table.table-striped
   %tbody
     %tr

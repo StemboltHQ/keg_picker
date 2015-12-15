@@ -20,6 +20,20 @@ body {
   border: 1px solid #e7e7e7;
 }
 
+.nav {
+  float: none;
+}
+
 .navbar {
   margin: 2em auto 1em;
+  text-align: center;
+
+  li {
+    float: none;
+    display: inline-block;
+  }
+}
+
+.center {
+  text-align: center;
 }

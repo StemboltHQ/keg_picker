@@ -1,4 +1,4 @@
-= link_to "Back", beers_path
+= link_to "< Back", beers_path
 
 %h1 Vote for your favourite beer
 
@@ -6,4 +6,4 @@
   = select_tag "beer_id", options_from_collection_for_select(@beers, "id", "brand"), class: "form-control"
 
   .action-links
-    = submit_tag "Vote", class: "btn btn-lg btn-default"
+    = submit_tag "Vote", class: "btn"

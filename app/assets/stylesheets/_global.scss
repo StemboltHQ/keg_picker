@@ -27,6 +27,22 @@ body {
   border: 1px solid #e7e7e7;
 }
 
+.nav {
+  float: none;
+  width: 100%;
+}
+
 .navbar {
   margin: 2em auto 1em;
+  float: none;
+  text-align: center;
+
+  li {
+    float: none;
+    display: inline-block;
+  }
+}
+
+.center {
+  text-align: center;
 }

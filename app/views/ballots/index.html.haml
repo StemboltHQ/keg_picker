@@ -5,8 +5,8 @@
   =link_to 'Next poll >', ballots_path, class: "chart-link next utility-link", "data-poll_id" => Poll.first.id
 .chart
   -poll_presenter = PollPresenter.new(poll)
-  = pie_chart poll_presenter.piechart_data
   = poll_presenter.number_of_votes
+  = pie_chart poll_presenter.piechart_data, colors: ["brown"]
 %table.table.table-striped
   %tbody
     %tr

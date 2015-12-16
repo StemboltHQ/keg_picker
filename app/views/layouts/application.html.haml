@@ -20,4 +20,5 @@
         = link_to "Sign in with Google", user_omniauth_authorize_path(:google)
     = render partial: "layouts/header"
     .main-content
+      = render partial: "layouts/flash"
       = yield

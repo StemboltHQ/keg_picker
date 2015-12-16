@@ -49,18 +49,6 @@ RSpec.describe BeersController, type: :controller do
     end
   end
 
-  describe "GET #show" do
-    subject { get :show, id: beer.to_param }
-
-    specify { expect(subject.status).to eq 200 }
-    it { is_expected.to render_template :show }
-
-    it "assigns a beer to @beer" do
-      subject
-      expect(assigns(:beer)).to eq beer
-    end
-  end
-
   describe "PATCH update"do
     subject { patch :update, id: beer.to_param, beer: beer_params }
     let(:beer) { FactoryGirl.create :beer, brand: "Corona" }
@@ -71,7 +59,7 @@ RSpec.describe BeersController, type: :controller do
       expect { subject }.to change { beer.reload.brand }.from("Corona").to("Corona Light")
     end
 
-    it { is_expected.to redirect_to beer }
+    it { is_expected.to redirect_to beers_path }
 
     context "with invalid parameters" do
       let(:beer_params) do { brand: "Jk" }

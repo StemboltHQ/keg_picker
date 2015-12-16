@@ -1,7 +1,7 @@
 class BallotsController < ApplicationController
   before_filter :load_beer, only: [:create]
   before_filter :load_ballot, only: [:show, :edit, :update, :destroy]
-  before_filter :load_all_beers, only: [:new, :edit]
+  before_filter :load_all_beers, only: [:new, :edit, :create]
   authorize_resource
 
   def index
@@ -15,21 +15,27 @@ class BallotsController < ApplicationController
   def create
     current = Poll.current
     if current
-      @ballot = current.ballots.create!(user_id: current_user.id, beer_id: @beer.id)
-      redirect_to @ballot
-    else
-      redirect_to beers_path
+      @ballot = current.ballots.new(user_id: current_user.id, beer_id: @beer.id)
+      if @ballot.save
+        flash[:success] = "You have successfully voted for #{ @beer.brand }"
+        redirect_to ballots_path
+      else
+        flash[:danger] = "Could not create a new vote for you :( "
+        render :new
+      end
     end
   end
 
   def update
     if @ballot.update(beer_id: params[:beer_id])
-      redirect_to @ballot
+      flash[:success] = "You have changed your vote to #{ @ballot.beer.brand }"
+      redirect_to ballots_path
     end
   end
 
   def destroy
     @ballot.destroy!
+    flash[:warning] = "Your vote was deleted.. Vote again?"
     redirect_to ballots_path
   end
 

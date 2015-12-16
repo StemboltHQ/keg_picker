@@ -1,5 +1,14 @@
 button,
+input[type="submit"],
 .btn {
   background-color: $color-buttons-main;
   border: 0;
+  color: $white;
+  font-weight: normal;
+  margin-bottom: 2em;
+  padding: 8px 24px 10px;
+
+  &:hover{
+    background-color: $orange-dark;
+  }
 }

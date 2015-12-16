@@ -1,12 +1,10 @@
-%nav.navbar.navbar-default.pull-right
+%nav.navbar
   %ul.nav.navbar-nav
     %li
-      =link_to "Add Beer", new_beer_path
+      =link_to "Vote!", new_ballot_path
     %li
-      =link_to "Make a Vote!", new_ballot_path
+      =link_to "Poll details", ballots_path
     %li
-      =link_to "See all votes", ballots_path
+      =link_to "Poll history", polls_path
     %li
-      =link_to "Start Poll", polls_path, method: :post
-    %li
-      =link_to "See current polls", polls_path
+      =link_to "Add a beer", new_beer_path

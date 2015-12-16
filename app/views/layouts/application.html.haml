@@ -4,20 +4,24 @@
     %meta{ content: 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type' }
     %title KegPicker
     = stylesheet_link_tag    'application', media: 'all'
+    <link href='https://fonts.googleapis.com/css?family=Abril+Fatface|Lato:400,700,400italic' rel='stylesheet' type='text/css'>
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
     = javascript_include_tag "http://www.google.com/jsapi", "chartkick"
   %body
-    .nav-bar
-      = render partial: "layouts/navbar"
-      - if user_signed_in?
-        Logged in as #{ current_user.email }
-        = link_to 'Edit profile', edit_user_registration_path
-        = link_to "Logout", destroy_user_session_path, method: :delete
-      - else
-        = link_to "Sign up", new_user_registration_path
-        = link_to "Login", new_user_session_path
-        = link_to "Sign in with Google", user_omniauth_authorize_path(:google)
-    = render partial: "layouts/header"
+    #page-header
+      .container
+        .nav-bar
+          - if user_signed_in?
+            Logged in as #{ current_user.email }
+            = link_to 'Edit profile', edit_user_registration_path, :class => 'utility-link'
+            = link_to "Logout", destroy_user_session_path, method: :delete, :class => 'utility-link'
+          - else
+            = link_to "Sign up", new_user_registration_path
+            = link_to "Login", new_user_session_path
+            = link_to "Sign in with Google", user_omniauth_authorize_path(:google)
+        = render partial: "layouts/header"
+        = render partial: "layouts/navbar"
     .main-content
-      = yield
+      .container
+        = yield

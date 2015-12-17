@@ -24,7 +24,7 @@ class PollsController < ApplicationController
   end
 
   def update
-    if @poll.update!(update_params)
+    if @poll.update(update_params)
       flash[:success] = "The Poll has been updated!"
       redirect_to polls_path
     end

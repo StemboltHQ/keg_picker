@@ -1,3 +1,4 @@
+@import "bourbon";
 @import "bootstrap-sprockets";
 @import "color_variables";
 @import "bootstrap_variables";
@@ -8,4 +9,5 @@
 @import "global";
 @import "typography";
 @import "components/tables";
+@import "components/forms";
 @import "components/buttons";

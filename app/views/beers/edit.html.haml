@@ -1,4 +1,6 @@
-%h1 Edit Beer's name
+= link_to "< Back", beers_path
+
+%h1 Edit beer name
 
 = render "errors/error_messages", object: @beer
 
@@ -8,5 +10,4 @@
     = f.text_field :brand, class: "form-control"
 
   %p.action-links
-    = f.submit "Update", class: "btn btn-lg btn-default"
-    = link_to "Back", beers_path, class: "btn btn-lg btn-default pull-right"
+    = f.submit "Update", class: "btn"

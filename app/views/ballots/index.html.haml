@@ -1,20 +1,21 @@
-%h1 All Votes
+%h1 Poll details
 -poll = Poll.last
-.row
-  .col-xs-12
-    =link_to 'previous', ballots_path, class: "chart-link previous", "data-poll_id" => poll.previous.id
-    =link_to 'next', ballots_path, class: "chart-link next", "data-poll_id" => Poll.first.id
-    .chart
-      -poll_presenter = PollPresenter.new(poll)
-      = pie_chart poll_presenter.piechart_data
-      = poll_presenter.number_of_votes
+.poll-navigation
+  =link_to '< Previous poll', ballots_path, class: "chart-link previous", "data-poll_id" => poll.previous.id
+  =link_to 'Next poll >', ballots_path, class: "chart-link next utility-link", "data-poll_id" => Poll.first.id
+.chart
+  -poll_presenter = PollPresenter.new(poll)
+  = poll_presenter.number_of_votes
+  = pie_chart poll_presenter.piechart_data, colors: ["brown"]
 %table.table.table-striped
   %tbody
     %tr
-      %td
+      %th
         Keg
-      %td
+      %th
         Voter
+      %th
+      %th
     -poll.ballots.each do |ballot|
       %tr
         %td
@@ -22,6 +23,6 @@
         %td
           #{ ballot.user.username }
         %td
-          =link_to "change", edit_ballot_path(ballot)
+          =link_to "Edit", edit_ballot_path(ballot)
         %td
-          =link_to "delete", ballot_path(ballot), method: :delete, data: { confirm: "Are you sure you want to delete you ballot?" }
+          =link_to "Delete", ballot_path(ballot), method: :delete, data: { confirm: "Are you sure you want to delete you ballot?" }

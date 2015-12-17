@@ -1,0 +1,25 @@
+input {
+  margin-bottom: 2em;
+}
+
+.form-control {
+  width: auto;
+}
+
+#error_explanation {
+  background: $red-light;
+  border-radius: 5px;
+  border: 1px solid $red-dark;
+  color: $red-dark;
+  padding: 1em 1.5em;
+
+  h3 {
+    color: $red-dark;
+    margin: 0 0 .5em;
+  }
+
+  ul {
+    margin-bottom: 0;
+    padding-left: 16px;
+  }
+}

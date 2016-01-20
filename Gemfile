@@ -31,6 +31,9 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-oauth2', '~> 1.3.1'
 
 gem 'chartkick'
+
+gem 'puma'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

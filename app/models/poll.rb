@@ -10,8 +10,8 @@ class Poll < ActiveRecord::Base
 
   def finalize
     if self.ballots.any?
-      find_winner
-      lock
+      pick_winner!
+      close!
     end
   end
 
@@ -25,7 +25,7 @@ class Poll < ActiveRecord::Base
 
   private
 
-  def find_winner
+  def pick_winner!
     winning_beer_id = ballots.
       select("beer_id, COUNT(id) AS ballot_count").
       group(:beer_id).
@@ -35,7 +35,7 @@ class Poll < ActiveRecord::Base
     update(winner_id: winning_beer_id)
   end
 
-  def lock
+  def close!
     update(closed: true)
   end
 end

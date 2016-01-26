@@ -6,8 +6,8 @@ RSpec.describe Poll, type: :model do
 
   let(:poll) { FactoryGirl.create :poll }
 
-  describe '#find_winner' do
-    subject { poll.find_winner }
+  describe '#finalize' do
+    subject { poll.finalize }
 
     let(:winner) { FactoryGirl.create :beer }
     let(:loser) { FactoryGirl.create :beer }
@@ -20,6 +20,11 @@ RSpec.describe Poll, type: :model do
     it 'sets the winner_id to the beer with most ballots' do
       expect { subject }.to change { poll.winner }.
         from(nil).to(winner)
+    end
+
+    it 'closes the poll' do
+      expect { subject }.to change { poll.closed }.
+        from(false).to(true)
     end
   end
 

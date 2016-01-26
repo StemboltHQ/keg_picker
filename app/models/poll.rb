@@ -15,6 +15,16 @@ class Poll < ActiveRecord::Base
     end
   end
 
+  def next
+    Poll.where("id > ?", id).first
+  end
+
+  def previous
+    Poll.where("id < ?", id).last
+  end
+
+  private
+
   def find_winner
     winning_beer_id = ballots.
       select("beer_id, COUNT(id) AS ballot_count").
@@ -26,14 +36,6 @@ class Poll < ActiveRecord::Base
   end
 
   def lock
-    self.update(closed: true)
-  end
-
-  def next
-    Poll.where("id > ?", id).first
-  end
-
-  def previous
-    Poll.where("id < ?", id).last
+    update(closed: true)
   end
 end

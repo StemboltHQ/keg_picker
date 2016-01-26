@@ -4,7 +4,21 @@ RSpec.describe Poll, type: :model do
   it { is_expected.to have_many :ballots }
   it { is_expected.to have_many :users }
 
-  let(:poll) { FactoryGirl.create :poll }
+  let(:poll) { FactoryGirl.create :poll, closed: closed }
+  let(:closed) { false }
+
+  describe '#open?' do
+    subject { poll.open? }
+
+    context 'when poll is open' do
+      it { is_expected.to be true }
+    end
+
+    context 'when poll is closed' do
+      let(:closed) { true }
+      it { is_expected.to be false }
+    end
+  end
 
   describe '#finalize' do
     subject { poll.finalize }

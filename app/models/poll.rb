@@ -16,7 +16,9 @@ class Poll < ActiveRecord::Base
   end
 
   def find_winner
-    self.update(winner: ballots.reverse_order.group(:beer).count.first[0])
+    beer_id = ballots.select("beer_id, COUNT(id) AS ballot_count").group(:beer_id).order("ballot_count").first.beer_id
+    winner = Beer.where(id: beer_id)
+    self.update(winner: winner)
   end
 
   def lock

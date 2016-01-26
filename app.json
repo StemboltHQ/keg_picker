@@ -1,0 +1,8 @@
+{
+  "name": "Keg Picker App",
+  "description": "We need beer, this app with let us vote on which beer to get.",
+  "image": "heroku/ruby",
+  "repository": "https://github.com/StemboltHQ/keg_picker",
+  "keywords": ["ruby", "rails" ],
+  "addons": [ "heroku-postgresql" ]
+}

@@ -3,6 +3,8 @@ class Poll < ActiveRecord::Base
   has_many :users, through: :ballots
   belongs_to :winner, class_name: "Beer"
 
+  scope :ongoing, -> { where(closed: false) }
+
   def self.current
     return last unless !any? || last.closed?
     nil

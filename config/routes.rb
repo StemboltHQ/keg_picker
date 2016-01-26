@@ -10,5 +10,5 @@ Rails.application.routes.draw do
     resources :polls, only: [:show]
   end
 
-  root "ballots#index"
+  root "pages#home"
 end

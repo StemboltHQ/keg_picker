@@ -8,6 +8,10 @@ class Poll < ActiveRecord::Base
     nil
   end
 
+  def open?
+    !closed
+  end
+
   def finalize
     if self.ballots.any?
       pick_winner!

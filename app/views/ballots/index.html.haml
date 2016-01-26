@@ -9,4 +9,4 @@
   -poll_presenter = PollPresenter.new(poll)
   = poll_presenter.number_of_votes
   = pie_chart poll_presenter.piechart_data, colors: ["brown"]
-= render 'ballots_table', ballots: poll.ballots
+= render 'ballots_table', poll: poll

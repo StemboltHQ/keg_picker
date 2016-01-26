@@ -12,9 +12,11 @@
         %td= ballot.beer.brand
         %td= ballot.user.username
         %td
-          = link_to "Edit", edit_ballot_path(ballot)
+          - if can? :edit, ballot
+            = link_to "Edit", edit_ballot_path(ballot)
         %td
-          = link_to "Delete",
-            ballot_path(ballot),
-            method: :delete,
-            data: { confirm: "Are you sure you want to delete your ballot?" }
+          - if can? :delete, ballot
+            = link_to "Delete",
+              ballot_path(ballot),
+              method: :delete,
+              data: { confirm: "Are you sure you want to delete your ballot?" }

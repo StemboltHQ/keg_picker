@@ -5,24 +5,14 @@ class Poll < ActiveRecord::Base
 
   def self.current
     return last unless !any? || last.closed?
-      nil
+    nil
   end
 
   def finalize
     if self.ballots.any?
-      find_winner
-      lock
+      pick_winner!
+      close!
     end
-  end
-
-  def find_winner
-    beer_id = ballots.select("beer_id, COUNT(id) AS ballot_count").group(:beer_id).order("ballot_count").first.beer_id
-    winner = Beer.where(id: beer_id)
-    self.update(winner: winner)
-  end
-
-  def lock
-    self.update(closed: true)
   end
 
   def next
@@ -31,5 +21,21 @@ class Poll < ActiveRecord::Base
 
   def previous
     Poll.where("id < ?", id).last
+  end
+
+  private
+
+  def pick_winner!
+    winning_beer_id = ballots.
+      select("beer_id, COUNT(id) AS ballot_count").
+      group(:beer_id).
+      order("ballot_count DESC").
+      first.
+      beer_id
+    update(winner_id: winning_beer_id)
+  end
+
+  def close!
+    update(closed: true)
   end
 end

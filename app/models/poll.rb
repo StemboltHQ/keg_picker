@@ -16,14 +16,13 @@ class Poll < ActiveRecord::Base
   end
 
   def find_winner
-    beer_id = ballots.
+    winning_beer_id = ballots.
       select("beer_id, COUNT(id) AS ballot_count").
       group(:beer_id).
-      order("ballot_count").
+      order("ballot_count DESC").
       first.
       beer_id
-    winner = Beer.where(id: beer_id)
-    self.update(winner: winner)
+    update(winner_id: winning_beer_id)
   end
 
   def lock

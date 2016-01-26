@@ -1,0 +1,19 @@
+%table.table.table-striped
+  %tbody
+    %tr
+      %th
+        Keg
+      %th
+        Voter
+      %th
+      %th
+    - ballots.each do |ballot|
+      %tr
+        %td
+          #{ ballot.beer.brand }
+        %td
+          #{ ballot.user.username }
+        %td
+          =link_to "Edit", edit_ballot_path(ballot)
+        %td
+          =link_to "Delete", ballot_path(ballot), method: :delete, data: { confirm: "Are you sure you want to delete your ballot?" }

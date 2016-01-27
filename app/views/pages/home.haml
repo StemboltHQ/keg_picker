@@ -7,10 +7,9 @@
 
 - if @poll
   - if @poll.ballots.any?
-    .chart
-      - poll_presenter = PollPresenter.new(@poll)
-      = poll_presenter.number_of_votes
-      = pie_chart poll_presenter.piechart_data, colors: ["brown"]
+    - poll_presenter = PollPresenter.new(@poll)
+    = poll_presenter.number_of_votes
+    = render "shared/chart", poll: poll_presenter
 
     = render "ballots/ballots_table", poll: @poll
   - else

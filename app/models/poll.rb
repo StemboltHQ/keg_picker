@@ -38,7 +38,7 @@ class Poll < ActiveRecord::Base
       order("ballot_count DESC").
       first.
       beer_id
-    update(winner_id: winning_beer_id)
+    update(winner_id: winning_beer_id, ended_at: Time.now)
   end
 
   def close!

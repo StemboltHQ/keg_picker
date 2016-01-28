@@ -1,15 +1,13 @@
 %table.table.table-striped
   %tbody
     %tr
-      %th
-        Keg
-      %th
-        Voter
+      %th Beer
+      %th Voter
       %th
       %th
     - poll.ballots.each do |ballot|
       %tr
-        %td= ballot.beer.brand
+        %td= ballot.beer.name
         %td= ballot.user.username
         %td
           - if poll.open? && can?(:edit, ballot)

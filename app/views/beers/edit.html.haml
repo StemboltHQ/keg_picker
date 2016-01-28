@@ -5,9 +5,7 @@
 = render "errors/error_messages", object: @beer
 
 = form_for @beer do |f|
-  %p
-    = f.label :change_name
-    = f.text_field :name, class: "form-control"
+  = render "form_fields", f: f
 
   %p.action-links
     = f.submit "Update", class: "btn"

@@ -1,9 +1,12 @@
 class PollsController < ApplicationController
-  before_filter :load_poll, only: [:destroy, :update]
+  before_filter :load_poll, only: [:show, :destroy, :update]
   authorize_resource
 
   def index
     @polls = Poll.all
+  end
+
+  def show
   end
 
   def create

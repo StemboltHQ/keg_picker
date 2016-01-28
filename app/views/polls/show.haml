@@ -1,0 +1,4 @@
+%h1= "Poll ##{@poll.id}"
+
+- poll_presenter = PollPresenter.new(@poll)
+= render "shared/chart", poll: poll_presenter

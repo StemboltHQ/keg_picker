@@ -1,6 +1,6 @@
 class PollsController < ApplicationController
   before_filter :load_poll, only: [:show, :destroy, :update]
-  authorize_resource
+  authorize_resource except: [:index, :show]
 
   def index
     @polls = Poll.all

@@ -24,7 +24,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'byebug'
   gem 'pry'
-  gem 'pry-byebug'
+  gem 'pry-rails'
   gem 'database_cleaner', require: false
   gem 'shoulda-matchers', '~> 3.0'
   gem 'simplecov', require: false
@@ -34,4 +34,3 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
-

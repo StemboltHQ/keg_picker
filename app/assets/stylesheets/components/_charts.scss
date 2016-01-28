@@ -1,0 +1,27 @@
+.chart {
+  margin: 2em 0;
+}
+
+.chart-item {
+  &:not(:first-child) {
+    margin-top: 0.5em;
+  }
+}
+
+.chart-item-bar {
+  padding: 0.5em;
+  color: white;
+  text-align: right;
+
+  // The recommended color palette in Stephen Few's book
+  // Show Me the Numbers: Designing Tables and Graphs to Enlighten
+  :nth-child(1) > & { background-color: #4d4d4d; } // grey
+  :nth-child(2) > & { background-color: #5da5da; } // blue
+  :nth-child(3) > & { background-color: #faa43a; } // orange
+  :nth-child(4) > & { background-color: #60bd68; } // green
+  :nth-child(5) > & { background-color: #f17Cb0; } // pink
+  :nth-child(6) > & { background-color: #b2912f; } // brown
+  :nth-child(7) > & { background-color: #b276b2; } // purple
+  :nth-child(8) > & { background-color: #decf3f; } // yellow
+  :nth-child(9) > & { background-color: #f15854; } // red
+}

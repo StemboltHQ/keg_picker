@@ -13,4 +13,7 @@ class PollPresenter < SimpleDelegator
     @poll.ballots.joins(:beer).group('beers.brand').count
   end
 
+  def highest_vote_count
+    piechart_data.values.max
+  end
 end

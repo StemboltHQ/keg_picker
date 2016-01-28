@@ -1,0 +1,6 @@
+.chart
+  - poll.piechart_data.each do |poll_item|
+    .chart-item
+      = "#{poll_item[0]} (#{poll_item[1]})"
+      .chart-item-bar(style="width: #{poll_item[1].fdiv(poll.highest_vote_count) * 100}%;")
+        = poll_item[1]

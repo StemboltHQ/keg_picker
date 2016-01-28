@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :beer do
-    sequence(:name) { |n| "Keg ##{ n }" }
+    sequence(:name) { |n| "Beer ##{n} #{["Pilsner", "Lager", "Pale Ale", "IPA", "Stout"]}" }
   end
 end

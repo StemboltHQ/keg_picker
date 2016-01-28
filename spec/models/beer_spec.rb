@@ -9,7 +9,7 @@ RSpec.describe Beer, type: :model do
   end
 
   it "is valid with a name at least three characters long" do
-    expect(described_class.new(name: "Keg").valid?).to be true
+    expect(described_class.new(name: "Hop Circle IPA").valid?).to be true
   end
 
   it "is invalid with a name less than three characters long" do

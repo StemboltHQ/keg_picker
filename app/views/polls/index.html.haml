@@ -19,7 +19,7 @@
     -@polls.each do |poll|
       %tr
         %td
-          #{ poll.winner.try!(:brand) }
+          #{ poll.winner.try!(:name) }
         %td
           #{ poll.created_at }
         %td

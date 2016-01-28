@@ -13,7 +13,7 @@ class BeersController < ApplicationController
   def create
     @beer = Beer.new(beer_params)
     if @beer.save
-      flash[:success] = "#{ @beer.brand } was added to the Beer list"
+      flash[:success] = "#{@beer.name} was added to the Beer list"
       redirect_to beers_path
     else
       flash[:danger] = "Could not add a new Beer :( Try again!"
@@ -38,8 +38,9 @@ class BeersController < ApplicationController
   end
 
   private
+
   def beer_params
-    params.require(:beer).permit(:brand)
+    params.require(:beer).permit(:name)
   end
 
   def load_beer

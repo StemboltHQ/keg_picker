@@ -54,8 +54,8 @@ RSpec.describe PollsController, type: :controller do
 
   describe "PATCH finilize" do
     let(:poll) { FactoryGirl.create(:poll) }
-    let(:beer) { FactoryGirl.create(:beer, brand: "Keg#1" ) }
-    let(:another_beer) { FactoryGirl.create(:beer, brand: "Keg#2" ) }
+    let(:beer) { FactoryGirl.create(:beer, name: "Keg#1" ) }
+    let(:another_beer) { FactoryGirl.create(:beer, name: "Keg#2" ) }
     let!(:ballots) { FactoryGirl.create_list :ballot, 3, beer: beer, poll: poll }
     let!(:more_ballots) { FactoryGirl.create_list :ballot, 4, beer: another_beer, poll: poll  }
     subject { patch :finalize, poll_id: poll.id }
@@ -64,7 +64,7 @@ RSpec.describe PollsController, type: :controller do
 
     it "assigns the beers with the most votes as a winner of the voting" do
       subject
-      expect(poll.reload.winner.brand).to eq("Keg#2")
+      expect(poll.reload.winner.name).to eq("Keg#2")
     end
 
     it "locks the poll" do

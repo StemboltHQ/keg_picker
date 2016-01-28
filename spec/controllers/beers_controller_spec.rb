@@ -36,7 +36,7 @@ RSpec.describe BeersController, type: :controller do
 
     context "with invalid parameters" do
       before :each do
-        post :create, beer: { brand: "Jk" }
+        post :create, beer: { name: "Jk" }
       end
 
       it "does not creates a new beer" do
@@ -51,18 +51,18 @@ RSpec.describe BeersController, type: :controller do
 
   describe "PATCH update"do
     subject { patch :update, id: beer.to_param, beer: beer_params }
-    let(:beer) { FactoryGirl.create :beer, brand: "Corona" }
+    let(:beer) { FactoryGirl.create :beer, name: "Corona" }
 
-    let(:beer_params) { { brand: "Corona Light" } }
+    let(:beer_params) { { name: "Corona Light" } }
 
     it "updates the beer" do
-      expect { subject }.to change { beer.reload.brand }.from("Corona").to("Corona Light")
+      expect { subject }.to change { beer.reload.name }.from("Corona").to("Corona Light")
     end
 
     it { is_expected.to redirect_to beers_path }
 
     context "with invalid parameters" do
-      let(:beer_params) do { brand: "Jk" }
+      let(:beer_params) do { name: "Jk" }
       end
 
       it "renders the template" do

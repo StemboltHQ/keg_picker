@@ -5,7 +5,6 @@ RSpec.describe BallotsController, type: :controller do
   let(:user) { FactoryGirl.create :user }
   let!(:beer) { FactoryGirl.create :beer }
   let(:ballot) { FactoryGirl.create :ballot }
-  let!(:poll) { FactoryGirl.create :poll }
 
   describe "GET #index" do
     subject { get :index }
@@ -22,24 +21,43 @@ RSpec.describe BallotsController, type: :controller do
 
   describe "POST #create" do
     subject { post :create, { beer_id: beer.id } }
+
+    context "creating a new ballot with an open poll" do
     let!(:poll) { FactoryGirl.create :poll }
 
-    it "creates a new ballot" do
-      expect { subject }.to change { Ballot.count }.by(1)
-    end
-
-    it "assigns a new ballot to the current poll" do
-      expect(Ballot.last).to eq(Poll.current.ballots.last)
-    end
-
-    context "when trying to create a second ballot" do
-      let(:another_beer) { FactoryGirl.create :beer }
-      before(:each) do
-        post :create, { beer_id: another_beer.id }
+      it "creates a new ballot" do
+        expect { subject }.to change { Ballot.count }.by(1)
       end
 
-      it "creates only one ballot per user per poll" do
-        expect(Ballot.count).to eq(1)
+      it "assigns a new ballot to the current poll" do
+        expect(Ballot.last).to eq(Poll.current.ballots.last)
+      end
+
+      context "when trying to create a second ballot" do
+        let(:another_beer) { FactoryGirl.create :beer }
+        before(:each) do
+          post :create, { beer_id: another_beer.id }
+        end
+
+        it "creates only one ballot per user per poll" do
+          expect(Ballot.count).to eq(1)
+        end
+      end
+    end
+
+    context "creating a new ballot with no open poll" do
+      it "does not create a new ballot" do
+        expect { subject }.to change { Ballot.count }.by(0)
+      end
+
+      it "redirects to the ballots page" do
+        subject
+        expect(response).to redirect_to(polls_path)
+      end
+
+      it "displays the flash message" do
+        subject
+        expect(flash[:danger]).to be_present
       end
     end
   end

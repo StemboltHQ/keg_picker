@@ -22,7 +22,7 @@
             = poll.winner.name
           - else
             No winner yet,
-            = link_to "vote now", root_path
+            = link_to "vote now", new_ballot_path
             !
         %td= poll.created_at.strftime("%m/%d/%Y")
         %td= poll.closed ? poll.ended_at.strftime("%m/%d/%Y") : nil

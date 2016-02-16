@@ -18,9 +18,9 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'chartkick'
 gem 'puma'
+gem 'factory_girl_rails', '~> 4.0', require: false # needed by rake task
 
 group :development, :test do
-  gem 'factory_girl_rails', '~> 4.0'
   gem 'rspec-rails', '~> 3.0'
   gem 'byebug'
   gem 'pry'

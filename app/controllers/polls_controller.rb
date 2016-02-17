@@ -1,5 +1,5 @@
 class PollsController < ApplicationController
-  before_filter :load_poll, only: [:show, :destroy, :update]
+  before_filter :load_poll, only: [:show, :edit, :destroy, :update]
   authorize_resource except: [:index, :show]
 
   def index
@@ -46,6 +46,6 @@ class PollsController < ApplicationController
   end
 
   def update_params
-    params.permit(:closed, :ended_at)
+    params.require(:poll).permit(:closed, :ended_at, :brewery)
   end
 end

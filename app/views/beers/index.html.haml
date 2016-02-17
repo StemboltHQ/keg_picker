@@ -4,13 +4,12 @@
 %table.table.table-striped
   %tbody
     %tr
-      %th
-        Beers
+      %th Beer
       %th
       %th
   -@beers.each do |beer|
     %tr
-      %td= beer.name
+      %td= "#{beer.brewery} #{beer.name}"
       %td
         = link_to "Delete", beer_path(beer), method: :delete, data: { confirm: "Are you sure you want to delete this beer?" }
       %td

@@ -5,6 +5,7 @@ RSpec.describe BallotsController, type: :controller do
   let(:user) { FactoryGirl.create :user }
   let!(:beer) { FactoryGirl.create :beer }
   let(:ballot) { FactoryGirl.create :ballot }
+  let!(:poll) { FactoryGirl.create :poll }
 
   describe "GET #index" do
     subject { get :index }

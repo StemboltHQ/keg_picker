@@ -20,6 +20,10 @@ gem 'chartkick'
 gem 'puma'
 gem 'factory_girl_rails', '~> 4.0', require: false # needed by rake task
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'byebug'

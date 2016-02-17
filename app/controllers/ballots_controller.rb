@@ -40,6 +40,7 @@ class BallotsController < ApplicationController
   end
 
   private
+
   def load_beer
     @beer = Beer.find(params[:beer_id])
   end
@@ -49,6 +50,11 @@ class BallotsController < ApplicationController
   end
 
   def load_all_beers
-    @beers = Beer.all
+    @beers =
+      if brewery = Poll.current.brewery.presence
+        Beer.where(brewery: brewery)
+      else
+        Beer.all
+      end
   end
 end

@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Poll, type: :model do
   it { is_expected.to have_many :ballots }
   it { is_expected.to have_many :users }
+  it { is_expected.to have_many :brewery }
 
   let(:poll) { FactoryGirl.create :poll, closed: closed }
   let(:closed) { false }

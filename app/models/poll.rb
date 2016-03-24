@@ -2,6 +2,7 @@ class Poll < ActiveRecord::Base
   has_many :ballots
   has_many :users, through: :ballots
   belongs_to :winner, class_name: "Beer"
+  belongs_to :brewery
 
   scope :ongoing, -> { where(closed: false) }
 

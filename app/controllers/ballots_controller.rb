@@ -11,7 +11,7 @@ class BallotsController < ApplicationController
   def create
     current = Poll.current
     if current
-      @ballot = current.ballots.new(user_id: current_user.id, beer_id: @beer.id)
+      @ballot = current.ballots.new(user_id: current_user.id, beer: @beer)
       if @ballot.save
         flash[:success] = "You have successfully voted for #{ @beer.name }"
         redirect_to root_path

@@ -44,6 +44,7 @@ RSpec.describe BallotsController, type: :controller do
   end
 
   describe "GET #new" do
+    let!(:poll) { FactoryGirl.create :poll }
     subject { get :new }
 
     it "assigns beers to @beers" do

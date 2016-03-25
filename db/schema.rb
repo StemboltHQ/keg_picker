@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217003421) do
+ActiveRecord::Schema.define(version: 20160324174705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,15 @@ ActiveRecord::Schema.define(version: 20160217003421) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "brewery"
+    t.integer  "brewery_id"
+  end
+
+  add_index "beers", ["brewery_id"], name: "index_beers_on_brewery_id", using: :btree
+
+  create_table "breweries", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "polls", force: :cascade do |t|
@@ -41,9 +49,10 @@ ActiveRecord::Schema.define(version: 20160217003421) do
     t.datetime "updated_at",                 null: false
     t.datetime "ended_at"
     t.integer  "winner_id"
-    t.string   "brewery"
+    t.integer  "brewery_id"
   end
 
+  add_index "polls", ["brewery_id"], name: "index_polls_on_brewery_id", using: :btree
   add_index "polls", ["winner_id"], name: "index_polls_on_winner_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
@@ -87,4 +96,6 @@ ActiveRecord::Schema.define(version: 20160217003421) do
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
 
+  add_foreign_key "beers", "breweries"
+  add_foreign_key "polls", "breweries"
 end

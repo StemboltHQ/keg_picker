@@ -3,7 +3,7 @@ class BeersController < ApplicationController
   before_action :load_beer, only: [:edit, :show, :destroy, :update]
 
   def index
-    @beers = Beer.all
+    @beers = Beer.order(:brewery).order(:name)
   end
 
   def new

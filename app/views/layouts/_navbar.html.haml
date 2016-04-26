@@ -3,4 +3,5 @@
     %li= link_to "Vote!", new_ballot_path
     %li= link_to "Polls", polls_path
     %li= link_to "Beers", beers_path
-    %li= link_to "Add a beer", new_beer_path
+    - if can? :create, Beer
+      %li= link_to "Add a beer", new_beer_path

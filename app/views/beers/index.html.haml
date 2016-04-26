@@ -11,6 +11,8 @@
     %tr
       %td= "#{beer.display_name}"
       %td
-        = link_to "Delete", beer_path(beer), method: :delete, data: { confirm: "Are you sure you want to delete this beer?" }
+        - if can? :delete, beer
+          = link_to "Delete", beer_path(beer), method: :delete, data: { confirm: "Are you sure you want to delete this beer?" }
       %td
-        = link_to "Edit", edit_beer_path(beer)
+        - if can? :edit, beer
+          = link_to "Edit", edit_beer_path(beer)

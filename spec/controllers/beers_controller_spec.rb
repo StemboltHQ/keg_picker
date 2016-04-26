@@ -14,7 +14,7 @@ RSpec.describe BeersController, type: :controller do
 
     it "assigns all beers as @beers" do
       subject
-      expect(assigns(:beers)).to eq beers
+      expect(assigns(:beers)).to match_array beers
     end
   end
 

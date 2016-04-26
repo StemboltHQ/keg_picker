@@ -2,6 +2,7 @@ class BallotsController < ApplicationController
   before_filter :load_beer, only: [:create]
   before_filter :load_ballot, only: [:edit, :update, :destroy]
   before_filter :load_all_beers, only: [:new, :edit, :create]
+  before_action :authenticate_user!, only: :new
   authorize_resource
 
   def new

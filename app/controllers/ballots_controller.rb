@@ -5,7 +5,12 @@ class BallotsController < ApplicationController
   authorize_resource
 
   def new
-    @ballot = Ballot.new
+    if Poll.current
+      @ballot = Ballot.new
+    else
+      flash[:warning] = "There is no open poll to vote in currently!"
+      redirect_to :back
+    end
   end
 
   def create
@@ -47,7 +52,7 @@ class BallotsController < ApplicationController
 
   def load_all_beers
     @beers =
-      if brewery = Poll.current.brewery.presence
+      if brewery = Poll.current.try(:brewery)
         Beer.where(brewery: brewery)
       else
         Beer.all

@@ -47,17 +47,34 @@ RSpec.describe BallotsController, type: :controller do
   end
 
   describe "GET #new" do
-    let!(:poll) { FactoryGirl.create :poll }
     subject { get :new }
 
-    it "assigns beers to @beers" do
-      subject
-      expect(assigns(:beers)).to eq(Beer.all)
+    context "when there is an open poll" do
+      let!(:poll) { FactoryGirl.create :poll }
+
+      it "assigns beers to @beers" do
+        subject
+        expect(assigns(:beers)).to eq(Beer.all)
+      end
+
+      it "assigns a new ballot to @ballot" do
+        subject
+        expect(assigns(:ballot)).to be_a_new(Ballot)
+      end
     end
 
-    it "assigns a new ballot to @ballot" do
-      subject
-      expect(assigns(:ballot)).to be_a_new(Ballot)
+    context "when there is no open poll" do
+      before(:each) { request.env["HTTP_REFERER"] = polls_path }
+
+      it "displays a warning message" do
+        subject
+        expect(flash[:warning]).to eq "There is no open poll to vote in currently!"
+      end
+
+      it "returns the user to their previous page" do
+        subject
+        expect(response).to redirect_to polls_path
+      end
     end
   end
 

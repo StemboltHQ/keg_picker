@@ -49,32 +49,40 @@ RSpec.describe BallotsController, type: :controller do
   describe "GET #new" do
     subject { get :new }
 
-    context "when there is an open poll" do
-      let!(:poll) { FactoryGirl.create :poll }
+    context "when a user is logged in" do
+      context "when there is an open poll" do
+        let!(:poll) { FactoryGirl.create :poll }
 
-      it "assigns beers to @beers" do
-        subject
-        expect(assigns(:beers)).to eq(Beer.all)
+        it "assigns beers to @beers" do
+          subject
+          expect(assigns(:beers)).to eq(Beer.all)
+        end
+
+        it "assigns a new ballot to @ballot" do
+          subject
+          expect(assigns(:ballot)).to be_a_new(Ballot)
+        end
       end
 
-      it "assigns a new ballot to @ballot" do
-        subject
-        expect(assigns(:ballot)).to be_a_new(Ballot)
+      context "when there is no open poll" do
+        before(:each) { request.env["HTTP_REFERER"] = polls_path }
+
+        it "displays a warning message" do
+          subject
+          expect(flash[:warning]).to eq "There is no open poll to vote in currently!"
+        end
+
+        it "returns the user to their previous page" do
+          subject
+          expect(response).to redirect_to polls_path
+        end
       end
     end
 
-    context "when there is no open poll" do
-      before(:each) { request.env["HTTP_REFERER"] = polls_path }
+    context "when a user is not logged in" do
+      before(:each) { sign_out user }
 
-      it "displays a warning message" do
-        subject
-        expect(flash[:warning]).to eq "There is no open poll to vote in currently!"
-      end
-
-      it "returns the user to their previous page" do
-        subject
-        expect(response).to redirect_to polls_path
-      end
+      it { is_expected.to redirect_to new_user_session_path }
     end
   end
 

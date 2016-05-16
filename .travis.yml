@@ -2,12 +2,19 @@ language: ruby
 sudo: false
 cache: bundler
 addons:
-  postgresql: "9.3"
+  postgresql: '9.3'
 before_script:
-  - psql -c 'create database keg_picker_test;' -U postgres
+- psql -c 'create database keg_picker_test;' -U postgres
 script:
-  - bundle exec rspec
+- bundle exec rspec
 rvm:
-  - 2.2.3
+- 2.2.3
 notifications:
   email: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: ZNBF4DmChS4v6nMai6x2GczCTMthVcApLxxh4ev+UF3T1C76I4eib4H6mH12XK+M8q7ksz1cCkTCO7FRpuVCsxDU+m58n06jXFV8MMeJm+Hy0tJhALsHRSGIDMZn4oQe1vU+mqfp4E/gvkGPUxtKV0+brwtEmjaHS/Q5uuqpl73mcsNV9Bhc/6/xRxSjaVtJrEU/Y0Y1Xzxx5DnhSBXkr3kfjbAUNw9TMeZgwSnCCTIUBOSqG+0MOGZ7MWiE/GRJMpBa+3NrFOtAtUvOpRGJLcZ9TKbzyM1vCn7V1p3YO8uZJje1706SEuCjnbzGwjcHDizl6gwn+j+SnarTEOEtN4yHr8fNXw7iZxO4CbfWIOQxhoxYavVWegFf+HyoSwO3RcurWuWPEySvjvmjKAGAnYkx7O/6Y63Cn50kine/x5epU25G3ADtShEgv4gaWtWEETpgpQCIPQKemrquRCaGsnEIyusC3eTjlYZSO/dfwmSZTLlXpVShOT1+3o5mSPBkU7O9eQXBZGXJNQ9lcYcYqY+xL1T9n56yTZ5yBd/DgerTvvF4IoURgmsn5r9er8MbZQ0NeFeRZPULkjk88YEoJlJQ59kBvhKnRWVAG5dO7i6j9/AZfZIxxirtTDWqkMhXchRg6PMqdzXy1Ako7ME8ZTVTrSMPhDlBJec/VBtJXjo=
+  app: keg_picker
+  on:
+    repo: StemboltHQ/keg_picker

@@ -1,5 +1,8 @@
 %h1= "Edit Poll ##{@poll.id}"
 
 = form_for @poll do |f|
-  = f.select :brewery, Beer.pluck(:brewery).uniq, { include_blank: true }
-  = f.submit
+  %div
+    = f.label :brewery
+    = f.select :brewery, Beer.pluck(:brewery).uniq, { include_blank: true }
+  %div
+    = f.submit

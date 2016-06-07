@@ -13,6 +13,7 @@
       - if can?(:manage, :all)
         %th
         %th
+        %th
     -@polls.each do |poll|
       %tr
         %td
@@ -33,5 +34,5 @@
               = link_to "Reopen", poll_path(id: poll.id, closed: false), method: :patch
             - else
               = link_to "Finalize", poll_finalize_path(poll_id: poll.id), method: :patch
-          %td
-            = link_to "Delete", poll_path(poll), method: :delete, data: { confirm: "Are you sure you want to delete this poll?" }
+          %td= link_to "Edit", edit_poll_path(poll)
+          %td= link_to "Delete", poll_path(poll), method: :delete, data: { confirm: "Are you sure you want to delete this poll?" }

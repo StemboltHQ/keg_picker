@@ -25,6 +25,9 @@ class BallotsController < ApplicationController
         flash[:danger] = "Could not create a new vote for you :( "
         render :new
       end
+    else
+      flash[:danger] = "There is no poll currently ongoing. Come back later :)"
+      redirect_to polls_path
     end
   end
 

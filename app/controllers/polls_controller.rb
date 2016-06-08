@@ -12,7 +12,7 @@ class PollsController < ApplicationController
   def create
     Poll.create!
     flash[:success] = "You have opened a new Poll"
-    redirect_to beers_path
+    redirect_to polls_path
   end
 
   def finalize
